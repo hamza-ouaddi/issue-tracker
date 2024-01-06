@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .background-light900_dark200 {
+    @apply bg-light-900 dark:bg-dark-200;
+  }
+
+  .background-light800_dark100 {
+    @apply bg-light-800 dark:bg-dark-100;
+  }
+
+  .background-light800_grey-secondary {
+    @apply bg-light-800 dark:bg-grey-secondary;
+  }
+
+  .text-primary900_light900 {
+    @apply text-primary-900 dark:text-light-900;
+  }
+
+  .text-primary600_light900 {
+    @apply text-primary-600 dark:text-light-900;
+  }
+
+  .h1-bold {
+    @apply text-[38px] font-bold leading-10;
+  }
+
+  .h2-bold {
+    @apply text-[32px] font-bold leading-4;
+  }
+
+  .h2-semibold {
+    @apply text-[32px] font-semibold leading-4;
+  }
+
+  .base-semibold {
+    @apply text-base font-semibold leading-4;
+  }
+
+  .body-semibold {
+    @apply text-sm font-semibold leading-4;
+  }
+
+  .body-medium {
+    @apply text-sm font-medium leading-4;
+  }
+
+  .body-normal {
+    @apply text-sm font-normal leading-4;
+  }
+}
