@@ -7,6 +7,10 @@
     @apply bg-light-900 dark:bg-dark-200;
   }
 
+  .background-light900_dark300 {
+    @apply bg-light-900 dark:bg-dark-300;
+  }
+
   .background-light800_dark100 {
     @apply bg-light-800 dark:bg-dark-100;
   }
@@ -50,4 +54,8 @@
   .body-normal {
     @apply text-sm font-normal leading-4;
   }
+}
+
+.radix-themes {
+  --default-font-family: var(--font-plusJakartaSans);
 }
