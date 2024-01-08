@@ -29,7 +29,9 @@ const LeftSideBar = () => {
       <hr className="w-full " />
       <div className="flex flex-col gap-4">
         {sideBarLinks.map((link) => {
-          const isActive = pathname === link.url;
+          const isActive =
+            pathname === link.url ||
+            (pathname.includes(link.url) && link.url.length > 1);
 
           return (
             <Link

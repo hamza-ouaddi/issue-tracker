@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import "@radix-ui/themes/styles.css";
+import "./theme-config.css";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Theme } from "@radix-ui/themes";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -26,8 +27,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.className} ${inter.className}`}>
-        {children}
+      <body className={plusJakartaSans.className}>
+        <Theme>{children}</Theme>
       </body>
     </html>
   );
