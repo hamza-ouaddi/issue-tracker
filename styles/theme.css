@@ -55,7 +55,3 @@
     @apply text-sm font-normal leading-4;
   }
 }
-
-.radix-themes {
-  --default-font-family: var(--font-plusJakartaSans);
-}

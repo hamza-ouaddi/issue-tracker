@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Poppins } from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import "./theme-config.css";
 import "./globals.css";
@@ -7,6 +7,7 @@ import { Theme } from "@radix-ui/themes";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
+  display: "swap",
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-plusJakartaSans",
 });
@@ -27,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={plusJakartaSans.className}>
+      <body className={`${plusJakartaSans.variable}`}>
         <Theme>{children}</Theme>
       </body>
     </html>
