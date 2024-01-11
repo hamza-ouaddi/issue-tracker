@@ -44,14 +44,14 @@
   }
 
   .body-semibold {
-    @apply text-sm font-semibold leading-4;
+    @apply text-sm !font-semibold leading-4;
   }
 
   .body-medium {
-    @apply text-sm font-medium leading-4;
+    @apply text-sm !font-medium leading-4;
   }
 
   .body-normal {
-    @apply text-sm font-normal leading-4;
+    @apply text-sm !font-normal leading-4;
   }
 }
