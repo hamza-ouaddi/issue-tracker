@@ -1,14 +1,12 @@
+import Button from "@/components/ui/Button";
+import Skeleton from "@/components/ui/Skeleton";
+import StatusBadge from "@/components/ui/StatusBadge";
+import { tableHeaderCells } from "@/constants";
 import { Table } from "@radix-ui/themes";
 import { Plus } from "lucide-react";
 import React from "react";
-import prisma from "@/prisma/client";
-import { tableHeaderCells } from "@/constants";
-import Button from "@/components/ui/Button";
-import StatusBadge from "@/components/ui/StatusBadge";
 
-const page = async () => {
-  const issues = await prisma.issue.findMany();
-
+const Loading = () => {
   return (
     <div>
       <h1 className="h1-bold text-primary900_light900">Issues</h1>
@@ -33,21 +31,21 @@ const page = async () => {
           </Table.Header>
 
           <Table.Body>
-            {issues.map((issue) => (
+            {[...Array(8)].map((_, index) => (
               <>
-                <Table.Row key={issue.id}>
+                <Table.Row key={index}>
                   <Table.RowHeaderCell className="body-semibold text-primary900_light900">
-                    {issue.title}
+                    <Skeleton size="h-3.5" />
 
                     <span className="block md:hidden mt-2">
-                      <StatusBadge status={issue.status} />
+                      <Skeleton />
                     </span>
                   </Table.RowHeaderCell>
                   <Table.Cell className="hidden md:table-cell">
-                    <StatusBadge status={issue.status} />
+                    <Skeleton size="h-3.5" />
                   </Table.Cell>
                   <Table.Cell className="body-semibold text-primary900_light900 hidden md:table-cell">
-                    {issue.createdAt.toDateString()}
+                    <Skeleton size="h-3.5" />
                   </Table.Cell>
                 </Table.Row>
               </>
@@ -59,4 +57,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Loading;
