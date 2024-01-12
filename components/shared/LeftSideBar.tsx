@@ -26,7 +26,7 @@ const LeftSideBar = () => {
           className="sm:hidden"
         />
       </Link>
-      <hr className="w-full " />
+      <hr className="w-full h-[1px] background-grey-secondary_dark100" />
       <div className="flex flex-col gap-4">
         {sideBarLinks.map((link) => {
           const isActive =

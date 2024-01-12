@@ -5,7 +5,9 @@ import React from "react";
 
 const StatusBadge = ({ status }: { status: Status }) => {
   return (
-    <Badge color={issueStatus[status].color}>{issueStatus[status].label}</Badge>
+    <Badge className="h-fit" color={issueStatus[status].color}>
+      {issueStatus[status].label}
+    </Badge>
   );
 };
 

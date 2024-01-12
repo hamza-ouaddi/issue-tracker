@@ -1,6 +1,5 @@
 import Button from "@/components/ui/Button";
 import Skeleton from "@/components/ui/Skeleton";
-import StatusBadge from "@/components/ui/StatusBadge";
 import { tableHeaderCells } from "@/constants";
 import { Table } from "@radix-ui/themes";
 import { Plus } from "lucide-react";
@@ -32,23 +31,21 @@ const Loading = () => {
 
           <Table.Body>
             {[...Array(8)].map((_, index) => (
-              <>
-                <Table.Row key={index}>
-                  <Table.RowHeaderCell className="body-semibold text-primary900_light900">
-                    <Skeleton size="h-3.5" />
+              <Table.Row key={index}>
+                <Table.RowHeaderCell className="body-semibold text-primary900_light900">
+                  <Skeleton size="h-3.5" />
 
-                    <span className="block md:hidden mt-2">
-                      <Skeleton />
-                    </span>
-                  </Table.RowHeaderCell>
-                  <Table.Cell className="hidden md:table-cell">
-                    <Skeleton size="h-3.5" />
-                  </Table.Cell>
-                  <Table.Cell className="body-semibold text-primary900_light900 hidden md:table-cell">
-                    <Skeleton size="h-3.5" />
-                  </Table.Cell>
-                </Table.Row>
-              </>
+                  <span className="block md:hidden mt-2">
+                    <Skeleton />
+                  </span>
+                </Table.RowHeaderCell>
+                <Table.Cell className="hidden md:table-cell">
+                  <Skeleton size="h-3.5" />
+                </Table.Cell>
+                <Table.Cell className="body-semibold text-primary900_light900 hidden md:table-cell">
+                  <Skeleton size="h-3.5" />
+                </Table.Cell>
+              </Table.Row>
             ))}
           </Table.Body>
         </Table.Root>
