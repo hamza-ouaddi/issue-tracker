@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { IssueSchema } from "@/lib/validations";
 import { z } from "zod";
 import { InputErrorMessage } from "@/components/ui/InputErrorMessage";
+import Loading from "./loading";
 
 type IssueForm = z.infer<typeof IssueSchema>;
 
