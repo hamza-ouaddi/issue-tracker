@@ -1,8 +1,10 @@
 import StatusBadge from "@/components/ui/StatusBadge";
 import { getIssueById } from "@/lib/actions/issue.action";
-import { Flex, Heading, Separator } from "@radix-ui/themes";
+import { Box, Flex, Grid, Heading, Separator } from "@radix-ui/themes";
 import React from "react";
 import CustomMarkdown from "@/components/shared/CustomMarkdown";
+import Button from "@/components/ui/Button";
+import { PenSquare } from "lucide-react";
 
 const page = async ({ params }: any) => {
   const result = await getIssueById({ issueId: params.id });
@@ -10,8 +12,12 @@ const page = async ({ params }: any) => {
   return (
     <div>
       <h1 className="h1-bold text-primary900_light900">Issues</h1>
-      <div className="mt-16">
-        <div className="card-wrapper background-light900_dark200">
+      <Flex
+        direction={{ initial: "column", md: "row" }}
+        gap="5"
+        className="mt-16"
+      >
+        <Box className="card-wrapper background-light900_dark200 w-full">
           <Flex direction="column" gap="5">
             <Flex gap="4" justify="between">
               <Heading className="h3-semibold text-primary900_light900">
@@ -22,14 +28,21 @@ const page = async ({ params }: any) => {
             <Separator size="4" className="background-light800_dark100" />
             <CustomMarkdown content={result.issue.description} />
             <Separator size="4" className="background-light800_dark100" />
-            <div className="flex justify-end">
+            <Flex justify="end">
               <p className="body-semibold text-primary900_light900">
                 {result.issue.createdAt.toDateString()}
               </p>
-            </div>
+            </Flex>
           </Flex>
-        </div>
-      </div>
+        </Box>
+        <Box className="min-w-[200px]">
+          <Button
+            href={`/issues/${result.issue.id}/edit`}
+            title="Edit Issue"
+            icon={<PenSquare size={18} />}
+          />
+        </Box>
+      </Flex>
     </div>
   );
 };
