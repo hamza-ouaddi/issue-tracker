@@ -22,7 +22,7 @@ const Button = ({
   return href ? (
     <Link
       href={href}
-      className="flex justify-center items-center gap-3 text-light-900 base-semibold rounded-lg w-fit primary-gradient px-4 py-3"
+      className="flex justify-center items-center gap-3 text-light-900 base-semibold rounded-lg min-w-fit primary-gradient px-4 py-3"
     >
       {icon} {title}
     </Link>

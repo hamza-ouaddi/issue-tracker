@@ -18,7 +18,7 @@ const page = async () => {
           <Button
             href="/issues/create"
             title="Add Issue"
-            icon={<Plus scale={30} />}
+            icon={<Plus scale={18} />}
           />
         </div>
         <Table.Root>
