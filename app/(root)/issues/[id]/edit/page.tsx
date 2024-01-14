@@ -1,6 +1,11 @@
-import IssueForm from "@/components/forms/IssueForm";
+import IssueFormSkeleton from "@/components/shared/IssueFormSkeleton";
 import { getIssueById } from "@/lib/actions/issue.action";
-import React from "react";
+import dynamic from "next/dynamic";
+
+const IssueForm = dynamic(() => import("@/components/forms/IssueForm"), {
+  ssr: false,
+  loading: () => <IssueFormSkeleton />,
+});
 
 const page = async ({ params }: any) => {
   const result = await getIssueById({ issueId: params.id });
