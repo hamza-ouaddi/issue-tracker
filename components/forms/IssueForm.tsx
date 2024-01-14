@@ -33,7 +33,15 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setIsSubmitting(true);
-      await axios.post("/api/issues", data);
+
+      if (issue) {
+        //If there is data, update issue
+        await axios.patch("/api/issues/" + issue.id, data);
+      } else {
+        //If there is no data, create new issue
+        await axios.post("/api/issues", data);
+      }
+
       router.push("/issues");
     } catch (error) {
       setIsSubmitting(false);
@@ -87,9 +95,9 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
         </Form.Field>
         <Form.Submit asChild>
           <Button
-            title="Create Issue"
+            title={issue ? "Edit Issue" : "Create Issue"}
             isSubmitting={isSubmitting}
-            isSubmittingText="Creating"
+            isSubmittingText={issue ? "Editing" : "Creating"}
           />
         </Form.Submit>
       </Form.Root>
