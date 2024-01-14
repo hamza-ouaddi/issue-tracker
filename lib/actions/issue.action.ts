@@ -1,9 +1,7 @@
 import prisma from "@/prisma/client";
+import { DeleteIssueParams, GetIssueByIdParams } from "@/types";
+import axios from "axios";
 import { notFound } from "next/navigation";
-
-interface GetIssueByIdParams {
-  issueId: string;
-}
 
 export async function getIssueById(params: GetIssueByIdParams) {
   try {
@@ -18,6 +16,17 @@ export async function getIssueById(params: GetIssueByIdParams) {
     }
 
     return { issue };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function deleteIssue(params: DeleteIssueParams) {
+  try {
+    const { issueId } = params;
+
+    await axios.delete("/api/issues/" + issueId);
   } catch (error) {
     console.log(error);
     throw error;

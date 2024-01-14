@@ -5,6 +5,7 @@ import React from "react";
 import CustomMarkdown from "@/components/shared/CustomMarkdown";
 import Button from "@/components/ui/Button";
 import { PenSquare } from "lucide-react";
+import DeleteIssueModal from "@/components/modals/DeleteIssueModal";
 
 const page = async ({ params }: any) => {
   const result = await getIssueById({ issueId: params.id });
@@ -36,11 +37,14 @@ const page = async ({ params }: any) => {
           </Flex>
         </Box>
         <Box className="min-w-[200px]">
-          <Button
-            href={`/issues/${result.issue.id}/edit`}
-            title="Edit Issue"
-            icon={<PenSquare size={18} />}
-          />
+          <Flex direction={{ initial: "row", md: "column" }} gap="4">
+            <Button
+              href={`/issues/${result.issue.id}/edit`}
+              title="Edit Issue"
+              icon={<PenSquare size={18} />}
+            />
+            <DeleteIssueModal issueId={result.issue.id} />
+          </Flex>
         </Box>
       </Flex>
     </div>

@@ -5,3 +5,11 @@ export interface SidebarLink {
   label: string;
   url: string;
 }
+
+export interface GetIssueByIdParams {
+  issueId: string;
+}
+
+export interface DeleteIssueParams {
+  issueId: number;
+}
