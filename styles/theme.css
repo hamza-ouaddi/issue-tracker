@@ -43,6 +43,9 @@
     @apply text-[24px] !font-semibold leading-4;
   }
 
+  .base-medium {
+    @apply text-base !font-medium leading-4;
+  }
   .base-semibold {
     @apply text-base !font-semibold leading-4;
   }
