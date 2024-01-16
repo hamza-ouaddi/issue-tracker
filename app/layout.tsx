@@ -4,6 +4,7 @@ import "@radix-ui/themes/styles.css";
 import "./theme-config.css";
 import "./globals.css";
 import { Theme } from "@radix-ui/themes";
+import AuthProvider from "./auth/AuthProvider";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -29,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${plusJakartaSans.variable}`}>
-        <Theme>{children}</Theme>
+        <AuthProvider>
+          <Theme>{children}</Theme>
+        </AuthProvider>
       </body>
     </html>
   );

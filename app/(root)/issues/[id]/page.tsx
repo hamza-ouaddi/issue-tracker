@@ -39,6 +39,7 @@ const page = async ({ params }: any) => {
         <Box className="min-w-[200px]">
           <Flex direction={{ initial: "row", md: "column" }} gap="4">
             <Button
+              theme="primary"
               href={`/issues/${result.issue.id}/edit`}
               title="Edit Issue"
               icon={<PenSquare size={18} />}
