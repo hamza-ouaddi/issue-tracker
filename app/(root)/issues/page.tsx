@@ -16,6 +16,7 @@ const page = async () => {
       <div className="card-wrapper w-full background-light900_dark200 flex flex-col gap-5 mt-16">
         <div className="flex justify-end">
           <Button
+            theme="primary"
             href="/issues/create"
             title="Add Issue"
             icon={<Plus scale={18} />}

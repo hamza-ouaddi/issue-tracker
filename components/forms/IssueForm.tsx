@@ -95,6 +95,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
         </Form.Field>
         <Form.Submit asChild>
           <Button
+            theme="primary"
             title={issue ? "Edit Issue" : "Create Issue"}
             isSubmitting={isSubmitting}
             isSubmittingText={issue ? "Editing" : "Creating"}
