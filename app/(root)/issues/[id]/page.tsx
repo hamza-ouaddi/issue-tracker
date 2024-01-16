@@ -6,8 +6,12 @@ import CustomMarkdown from "@/components/shared/CustomMarkdown";
 import Button from "@/components/ui/Button";
 import { PenSquare } from "lucide-react";
 import DeleteIssueModal from "@/components/modals/DeleteIssueModal";
+import { getServerSession } from "next-auth";
+import authOptions from "@/app/auth/authOptions";
 
 const page = async ({ params }: any) => {
+  const session = await getServerSession(authOptions);
+
   const result = await getIssueById({ issueId: params.id });
 
   return (
@@ -36,17 +40,20 @@ const page = async ({ params }: any) => {
             </Flex>
           </Flex>
         </Box>
-        <Box className="min-w-[200px]">
-          <Flex direction={{ initial: "row", md: "column" }} gap="4">
-            <Button
-              theme="primary"
-              href={`/issues/${result.issue.id}/edit`}
-              title="Edit Issue"
-              icon={<PenSquare size={18} />}
-            />
-            <DeleteIssueModal issueId={result.issue.id} />
-          </Flex>
-        </Box>
+
+        {session && (
+          <Box className="min-w-[200px]">
+            <Flex direction={{ initial: "row", md: "column" }} gap="4">
+              <Button
+                theme="primary"
+                href={`/issues/${result.issue.id}/edit`}
+                title="Edit Issue"
+                icon={<PenSquare size={18} />}
+              />
+              <DeleteIssueModal issueId={result.issue.id} />
+            </Flex>
+          </Box>
+        )}
       </Flex>
     </div>
   );
