@@ -3,8 +3,9 @@ import { Plus_Jakarta_Sans, Poppins } from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import "./theme-config.css";
 import "./globals.css";
-import { Theme } from "@radix-ui/themes";
 import AuthProvider from "./auth/AuthProvider";
+import { Providers } from "./providers";
+import { Theme } from "@radix-ui/themes";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -28,10 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable}`}>
         <AuthProvider>
-          <Theme>{children}</Theme>
+          <Providers>
+            <Theme>{children}</Theme>
+          </Providers>
         </AuthProvider>
       </body>
     </html>
