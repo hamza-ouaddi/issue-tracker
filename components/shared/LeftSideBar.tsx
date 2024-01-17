@@ -1,5 +1,7 @@
 "use client";
 import { sideBarLinks } from "@/constants";
+import { Box, Separator } from "@radix-ui/themes";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,26 +9,38 @@ import React from "react";
 
 const LeftSideBar = () => {
   const pathname = usePathname();
+  const { theme } = useTheme();
+
+  const logoSrc =
+    theme === "light"
+      ? "/assets/images/dark-logo.svg"
+      : "/assets/images/light-logo.svg";
+
   return (
     <section className="background-light900_dark200 p-8 flex flex-col gap-8 sm:min-w-[300px]">
-      <Link href="/">
-        <Image
-          src="/assets/images/dark-logo.svg"
-          alt="Logo"
-          width={200}
-          height={40}
-          className="max-sm:hidden"
-        />
+      <Box className="mx-auto">
+        <Link href="/">
+          <Image
+            src={logoSrc}
+            alt="Logo"
+            width={200}
+            height={40}
+            className="max-sm:hidden"
+          />
 
-        <Image
-          src="/assets/images/logo-icon.svg"
-          alt="Logo"
-          width={40}
-          height={40}
-          className="sm:hidden"
-        />
-      </Link>
-      <hr className="w-full h-[1px] background-grey-secondary_dark100" />
+          <Image
+            src="/assets/images/logo-icon.svg"
+            alt="Logo"
+            width={40}
+            height={40}
+            className="sm:hidden"
+          />
+        </Link>
+      </Box>
+      <Separator
+        orientation="horizontal"
+        className="background-grey-secondary_dark100 !w-auto -mx-8"
+      />
       <div className="flex flex-col gap-4">
         {sideBarLinks.map((link) => {
           const isActive =
