@@ -6,6 +6,7 @@ import "./globals.css";
 import AuthProvider from "./auth/AuthProvider";
 import { Providers } from "./providers";
 import { Theme } from "@radix-ui/themes";
+import ReactQueryClientProvider from "./ReactQueryClientProvider";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -31,11 +32,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable}`}>
-        <AuthProvider>
-          <Providers>
-            <Theme>{children}</Theme>
-          </Providers>
-        </AuthProvider>
+        <ReactQueryClientProvider>
+          <AuthProvider>
+            <Providers>
+              <Theme>{children}</Theme>
+            </Providers>
+          </AuthProvider>
+        </ReactQueryClientProvider>
       </body>
     </html>
   );

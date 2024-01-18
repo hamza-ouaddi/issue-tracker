@@ -1,13 +1,14 @@
 import StatusBadge from "@/components/ui/StatusBadge";
 import { getIssueById } from "@/lib/actions/issue.action";
 import { Box, Flex, Grid, Heading, Separator } from "@radix-ui/themes";
-import React from "react";
+import React, { useState } from "react";
 import CustomMarkdown from "@/components/shared/CustomMarkdown";
 import Button from "@/components/ui/Button";
 import { PenSquare } from "lucide-react";
 import DeleteIssueModal from "@/components/modals/DeleteIssueModal";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
+import DepartmentSelect from "@/components/ui/DepartmentSelect";
 
 const page = async ({ params }: any) => {
   const session = await getServerSession(authOptions);
@@ -44,6 +45,7 @@ const page = async ({ params }: any) => {
         {session && (
           <Box className="min-w-[200px]">
             <Flex direction={{ initial: "row", md: "column" }} gap="4">
+              <DepartmentSelect />
               <Button
                 theme="primary"
                 href={`/issues/${result.issue.id}/edit`}
