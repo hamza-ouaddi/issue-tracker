@@ -40,7 +40,7 @@ const Button = ({
         isSubmitting ? "bg-gray-500 opacity-35" : theme
       } ${theme === "primary" ? "primary-gradient" : ""} ${
         theme === "secondary" ? "bg-grey-secondary" : ""
-      }
+      } ${radius ? radius : "rounded-lg"}
       `}
       disabled={isSubmitting}
     >
