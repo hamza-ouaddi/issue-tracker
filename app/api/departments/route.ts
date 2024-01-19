@@ -10,11 +10,11 @@ const departmentSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  //   const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-  //   if (!session) {
-  //     return NextResponse.json({}, { status: 401 });
-  //   }
+  if (!session) {
+    return NextResponse.json({}, { status: 401 });
+  }
 
   const body = await request.json();
   const validation = departmentSchema.safeParse(body);

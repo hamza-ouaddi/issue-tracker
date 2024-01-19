@@ -1,13 +1,12 @@
 "use client";
 
-import { Department } from "@prisma/client";
+import { Department, Issue } from "@prisma/client";
 import { Select } from "@radix-ui/themes";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Skeleton from "./Skeleton";
 
-const DepartmentSelect = () => {
+const DepartmentSelect = ({ issue }: { issue: Issue }) => {
   const {
     data: departments,
     error,
@@ -23,8 +22,18 @@ const DepartmentSelect = () => {
 
   if (error) return null;
 
+  //To update the selected department in issue table
+  const assignDepartment = (departmentId: string) => {
+    axios.patch("/api/issues/" + issue.id, {
+      departmentId: departmentId === "unassigned" ? null : departmentId,
+    });
+  };
+
   return (
-    <Select.Root>
+    <Select.Root
+      defaultValue={issue.departmentId || "unassigned"}
+      onValueChange={assignDepartment}
+    >
       <Select.Trigger
         placeholder="Unassigned"
         variant="soft"
@@ -32,6 +41,7 @@ const DepartmentSelect = () => {
         radius="large"
       />
       <Select.Content position="popper" color="indigo">
+        <Select.Item value="unassigned">Unassigned</Select.Item>
         <Select.Group>
           <Select.Label>Department</Select.Label>
           {departments?.map((dep) => (
