@@ -1,4 +1,4 @@
-import { IssueSchema } from "@/lib/validations";
+import { UpdateIssueSchema } from "@/lib/validations";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
@@ -8,6 +8,7 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  //To give access to authenticated users
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -15,10 +16,27 @@ export async function PATCH(
   }
 
   const body = await request.json();
-  const validation = IssueSchema.safeParse(body);
+
+  //To validate new form input data
+  const validation = UpdateIssueSchema.safeParse(body);
 
   if (!validation.success) {
     return NextResponse.json(validation.error.errors, { status: 400 });
+  }
+
+  const { title, description, departmentId } = body;
+
+  if (departmentId) {
+    const department = await prisma.department.findUnique({
+      where: { id: departmentId },
+    });
+
+    if (!department) {
+      return NextResponse.json(
+        { error: "Department not found" },
+        { status: 404 }
+      );
+    }
   }
 
   const issue = await prisma.issue.findUnique({
@@ -32,8 +50,9 @@ export async function PATCH(
   const updateIssue = await prisma.issue.update({
     where: { id: issue.id },
     data: {
-      title: body.title,
-      description: body.description,
+      title,
+      description,
+      departmentId,
     },
   });
 

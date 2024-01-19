@@ -45,7 +45,7 @@ const page = async ({ params }: any) => {
         {session && (
           <Box className="min-w-[200px]">
             <Flex direction={{ initial: "row", md: "column" }} gap="4">
-              <DepartmentSelect />
+              <DepartmentSelect issue={result.issue} />
               <Button
                 theme="primary"
                 href={`/issues/${result.issue.id}/edit`}
