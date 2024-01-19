@@ -15,6 +15,10 @@
     @apply !bg-light-800 dark:!bg-dark-100;
   }
 
+  .backgorund-light800_dark300 {
+    @apply !bg-light-800 dark:!bg-dark-300;
+  }
+
   .background-light800_grey-secondary {
     @apply bg-light-800 dark:bg-grey-secondary;
   }
@@ -24,7 +28,7 @@
   }
 
   .text-primary600_light900 {
-    @apply text-primary-600 dark:text-light-900;
+    @apply !text-primary-600 dark:!text-light-900;
   }
 
   .h1-bold {
