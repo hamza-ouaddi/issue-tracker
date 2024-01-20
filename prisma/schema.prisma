@@ -19,6 +19,8 @@ model Issue {
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
   departmentId String?
+  author       User?       @relation(fields: [authorId], references: [id])
+  authorId     String?
 }
 
 enum Status {
@@ -69,6 +71,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  issues        Issue[]
 }
 
 model VerificationToken {

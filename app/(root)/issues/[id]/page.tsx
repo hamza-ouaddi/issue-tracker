@@ -1,6 +1,6 @@
 import StatusBadge from "@/components/ui/StatusBadge";
 import { getIssueById } from "@/lib/actions/issue.action";
-import { Box, Flex, Grid, Heading, Separator } from "@radix-ui/themes";
+import { Avatar, Box, Flex, Grid, Heading, Separator } from "@radix-ui/themes";
 import React, { useState } from "react";
 import CustomMarkdown from "@/components/shared/CustomMarkdown";
 import Button from "@/components/ui/Button";
@@ -34,7 +34,18 @@ const page = async ({ params }: any) => {
             <Separator size="4" className="background-light800_dark100" />
             <CustomMarkdown content={result.issue.description} />
             <Separator size="4" className="background-light800_dark100" />
-            <Flex justify="end">
+            <Flex justify="between">
+              <Flex align="center" gap="2">
+                <Avatar
+                  src={result.issue.author?.image!}
+                  fallback="U"
+                  radius="medium"
+                />
+                <p className="body-semibold text-primary900_light900">
+                  {result.issue.author?.name}
+                </p>
+              </Flex>
+
               <p className="body-semibold text-primary900_light900">
                 {result.issue.createdAt.toDateString()}
               </p>
