@@ -9,6 +9,7 @@ export async function getIssueById(params: GetIssueByIdParams) {
 
     const issue = await prisma.issue.findUnique({
       where: { id: parseInt(issueId) },
+      include: { author: { select: { image: true, name: true } } },
     });
 
     if (!issue) {

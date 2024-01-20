@@ -1,4 +1,4 @@
-import { Table } from "@radix-ui/themes";
+import { Avatar, Flex, Table } from "@radix-ui/themes";
 import { Plus } from "lucide-react";
 import React from "react";
 import prisma from "@/prisma/client";
@@ -8,7 +8,6 @@ import StatusBadge from "@/components/ui/StatusBadge";
 import Link from "next/link";
 import IssueStatusFilter from "@/components/IssueStatusFilter";
 import { Status } from "@prisma/client";
-import { undefined } from "zod";
 
 interface Props {
   searchParams: { status: Status };
@@ -25,7 +24,10 @@ const page = async ({ searchParams }: Props) => {
   const issues = await prisma.issue.findMany({
     //@ts-ignore
     where: { status },
+    include: { author: { select: { name: true, image: true } } },
   });
+
+  console.log(issues);
 
   return (
     <div>
@@ -79,6 +81,17 @@ const page = async ({ searchParams }: Props) => {
                 </Table.Cell>
                 <Table.Cell className="body-semibold text-primary900_light900 hidden md:table-cell">
                   {issue.createdAt.toDateString()}
+                </Table.Cell>
+
+                <Table.Cell className="body-semibold text-primary900_light900 ">
+                  <Flex align="center" gap="2">
+                    <Avatar
+                      src={issue.author?.image!}
+                      fallback="U"
+                      radius="full"
+                    />
+                    <p>{issue.author?.name}</p>
+                  </Flex>
                 </Table.Cell>
               </Table.Row>
             ))}

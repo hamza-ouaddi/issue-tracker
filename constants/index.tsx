@@ -28,6 +28,10 @@ export const tableHeaderCells = [
     title: "Created At",
     value: "created_at",
   },
+  {
+    title: "Author",
+    value: "author",
+  },
 ];
 
 export const issueStatus: Record<
