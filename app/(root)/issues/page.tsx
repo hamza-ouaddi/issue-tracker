@@ -1,4 +1,4 @@
-import { Avatar, Flex, Table } from "@radix-ui/themes";
+import { Avatar, Box, Flex, Table } from "@radix-ui/themes";
 import { ChevronUp, Plus } from "lucide-react";
 import React, { useState } from "react";
 import prisma from "@/prisma/client";
@@ -8,9 +8,14 @@ import StatusBadge from "@/components/ui/StatusBadge";
 import Link from "next/link";
 import IssueStatusFilter from "@/components/IssueStatusFilter";
 import { Issue, Status } from "@prisma/client";
+import Pagination from "@/components/shared/Pagination";
 
 interface Props {
-  searchParams: { status: Status; orderBy: keyof Issue };
+  searchParams: {
+    status: Status;
+    orderBy: keyof Issue;
+    page: string;
+  };
 }
 
 const page = async ({ searchParams }: Props) => {
@@ -28,11 +33,20 @@ const page = async ({ searchParams }: Props) => {
     ? { [searchParams.orderBy]: "desc" }
     : undefined;
 
+  //For Pagination
+  const page = parseInt(searchParams.page) || 1;
+  const pagesSize = 10;
+
   const issues = await prisma.issue.findMany({
-    //@ts-ignore
     where: { status },
     include: { author: { select: { name: true, image: true } } },
     orderBy: orderBy,
+    skip: (page - 1) * pagesSize,
+    take: pagesSize,
+  });
+
+  const issuesCount = await prisma.issue.count({
+    where: { status },
   });
 
   return (
@@ -111,6 +125,13 @@ const page = async ({ searchParams }: Props) => {
           </Table.Body>
         </Table.Root>
       </div>
+      <Box mt="6">
+        <Pagination
+          allItems={issuesCount}
+          pageSize={pagesSize}
+          currentPage={page}
+        />
+      </Box>
     </div>
   );
 };
