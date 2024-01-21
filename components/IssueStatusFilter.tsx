@@ -15,11 +15,17 @@ const IssueStatusFilter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  //To chenge url query parameter according to selected fitler and sorting column
   const handleSelectValueChange = (status: Status | "ALL") => {
-    const query =
-      status === "ALL" || !Object.values(Status).includes(status)
-        ? ""
-        : `/?status=${status}`;
+    const params = new URLSearchParams();
+    if (status && status !== "ALL" && Object.values(Status).includes(status)) {
+      params.append("status", status);
+    }
+    if (searchParams.get("orderBy")) {
+      params.append("orderBy", searchParams.get("orderBy")!);
+    }
+
+    const query = params.size ? "?" + params.toString() : "";
 
     router.push("/issues/" + query);
   };

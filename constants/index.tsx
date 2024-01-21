@@ -1,5 +1,5 @@
 import { SidebarLink } from "@/types";
-import { Status } from "@prisma/client";
+import { Issue, Status } from "@prisma/client";
 import { LayoutDashboard, MessageSquareMore } from "lucide-react";
 
 export const sideBarLinks: SidebarLink[] = [
@@ -15,7 +15,11 @@ export const sideBarLinks: SidebarLink[] = [
   },
 ];
 
-export const tableHeaderCells = [
+export const tableHeaderCells: {
+  title: string;
+  value: keyof Issue;
+  className?: string;
+}[] = [
   {
     title: "Title",
     value: "title",
@@ -23,14 +27,16 @@ export const tableHeaderCells = [
   {
     title: "Status",
     value: "status",
+    className: "hidden md:table-cell",
   },
   {
     title: "Created At",
-    value: "created_at",
+    value: "createdAt",
+    className: "hidden md:table-cell",
   },
   {
     title: "Author",
-    value: "author",
+    value: "authorId",
   },
 ];
 

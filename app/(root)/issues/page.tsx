@@ -1,16 +1,16 @@
 import { Avatar, Flex, Table } from "@radix-ui/themes";
-import { Plus } from "lucide-react";
-import React from "react";
+import { ChevronUp, Plus } from "lucide-react";
+import React, { useState } from "react";
 import prisma from "@/prisma/client";
 import { tableHeaderCells } from "@/constants";
 import Button from "@/components/ui/Button";
 import StatusBadge from "@/components/ui/StatusBadge";
 import Link from "next/link";
 import IssueStatusFilter from "@/components/IssueStatusFilter";
-import { Status } from "@prisma/client";
+import { Issue, Status } from "@prisma/client";
 
 interface Props {
-  searchParams: { status: Status };
+  searchParams: { status: Status; orderBy: keyof Issue };
 }
 
 const page = async ({ searchParams }: Props) => {
@@ -21,13 +21,19 @@ const page = async ({ searchParams }: Props) => {
     ? searchParams.status
     : undefined;
 
+  //To sort issues table columns
+  const orderBy = tableHeaderCells
+    .map((cell) => cell.value)
+    .includes(searchParams.orderBy)
+    ? { [searchParams.orderBy]: "desc" }
+    : undefined;
+
   const issues = await prisma.issue.findMany({
     //@ts-ignore
     where: { status },
     include: { author: { select: { name: true, image: true } } },
+    orderBy: orderBy,
   });
-
-  console.log(issues);
 
   return (
     <div>
@@ -45,14 +51,21 @@ const page = async ({ searchParams }: Props) => {
         <Table.Root>
           <Table.Header>
             <Table.Row>
-              {tableHeaderCells.map((cell, index) => (
+              {tableHeaderCells.map((cell) => (
                 <Table.ColumnHeaderCell
                   key={cell.value}
-                  className={`body-medium text-grey-secondary ${
-                    index === 1 && "hidden md:table-cell"
-                  } ${index === 2 && "hidden md:table-cell"}`}
+                  className={`body-medium text-grey-secondary ${cell.className}`}
                 >
-                  {cell.title}
+                  <Link
+                    href={{
+                      query: { ...searchParams, orderBy: cell.value },
+                    }}
+                  >
+                    {cell.title}
+                  </Link>
+                  {cell.value === searchParams.orderBy && (
+                    <ChevronUp className="inline" size={18} />
+                  )}
                 </Table.ColumnHeaderCell>
               ))}
             </Table.Row>
