@@ -9,13 +9,10 @@ import Link from "next/link";
 import IssueStatusFilter from "@/components/IssueStatusFilter";
 import { Issue, Status } from "@prisma/client";
 import Pagination from "@/components/shared/Pagination";
+import IssueTable, { IssueQuery } from "@/components/IssueTable";
 
 interface Props {
-  searchParams: {
-    status: Status;
-    orderBy: keyof Issue;
-    page: string;
-  };
+  searchParams: IssueQuery
 }
 
 const page = async ({ searchParams }: Props) => {
@@ -62,68 +59,7 @@ const page = async ({ searchParams }: Props) => {
             icon={<Plus scale={18} />}
           />
         </div>
-        <Table.Root>
-          <Table.Header>
-            <Table.Row>
-              {tableHeaderCells.map((cell) => (
-                <Table.ColumnHeaderCell
-                  key={cell.value}
-                  className={`body-medium text-grey-secondary ${cell.className}`}
-                >
-                  <Link
-                    href={{
-                      query: { ...searchParams, orderBy: cell.value },
-                    }}
-                  >
-                    {cell.title}
-                  </Link>
-                  {cell.value === searchParams.orderBy && (
-                    <ChevronUp className="inline" size={18} />
-                  )}
-                </Table.ColumnHeaderCell>
-              ))}
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-            {issues.map((issue) => (
-              <Table.Row
-                key={issue.id}
-                className="hover:bg-light-800 dark:hover:bg-dark-100 transition-all ease-in"
-              >
-                <Table.RowHeaderCell className="body-semibold text-primary900_light900">
-                  <Link
-                    href={`/issues/${issue.id}`}
-                    className="hover:text-primary-600 transition-all ease-in delay-75"
-                  >
-                    {issue.title}
-                  </Link>
-
-                  <span className="block md:hidden mt-2">
-                    <StatusBadge status={issue.status} />
-                  </span>
-                </Table.RowHeaderCell>
-                <Table.Cell className="hidden md:table-cell">
-                  <StatusBadge status={issue.status} />
-                </Table.Cell>
-                <Table.Cell className="body-semibold text-primary900_light900 hidden md:table-cell">
-                  {issue.createdAt.toDateString()}
-                </Table.Cell>
-
-                <Table.Cell className="body-semibold text-primary900_light900 ">
-                  <Flex align="center" gap="2">
-                    <Avatar
-                      src={issue.author?.image!}
-                      fallback="U"
-                      radius="full"
-                    />
-                    <p>{issue.author?.name}</p>
-                  </Flex>
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table.Root>
+        <IssueTable searchParams={searchParams} issues={issues} />
       </div>
       <Box mt="6">
         <Pagination

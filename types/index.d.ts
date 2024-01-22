@@ -13,3 +13,8 @@ export interface GetIssueByIdParams {
 export interface DeleteIssueParams {
   issueId: number;
 }
+
+export interface Author{
+  name: string | null,
+  image: string | null
+}
