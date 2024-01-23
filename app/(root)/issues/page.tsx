@@ -12,22 +12,22 @@ import Pagination from "@/components/shared/Pagination";
 import IssueTable, { IssueQuery } from "@/components/IssueTable";
 
 interface Props {
-  searchParams: IssueQuery
+  searchParams: IssueQuery;
 }
 
 const page = async ({ searchParams }: Props) => {
   //To check if the selected status filter is available
   const issuesStatus = Object.values(Status);
-  console.log(issuesStatus);
   const status = issuesStatus.includes(searchParams.status)
     ? searchParams.status
     : undefined;
 
   //To sort issues table columns
+  const order = searchParams.order === "desc" ? "asc" : "desc";
   const orderBy = tableHeaderCells
     .map((cell) => cell.value)
     .includes(searchParams.orderBy)
-    ? { [searchParams.orderBy]: "desc" }
+    ? { [searchParams.orderBy]: order }
     : undefined;
 
   //For Pagination
