@@ -27,6 +27,10 @@ const config: Config = {
         },
         "grey-secondary": "#A3AED0",
       },
+      boxShadow: {
+        secondaryLight: "0px 18px 40px 0px rgba(112, 144, 176, 0.12)",
+        secondaryDark: "0px 18px 40px 0px rgba(28, 28, 28, 0.4)",
+      },
       fontFamily: {
         inter: ["var(--font-inter)"],
         plusJakartaSans: ["var(--font-plusJakartaSans"],

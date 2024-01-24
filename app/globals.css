@@ -22,14 +22,6 @@ body {
   box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
 }
 
-.secondary-box-shadow {
-  box-shadow: 0px 18px 40px 0px rgba(112, 144, 176, 0.12);
-}
-
-.dark-secondary-box-shadow {
-  box-shadow: 0px 18px 40px 0px rgba(28, 28, 28, 0.4);
-}
-
 .rt-TableCell {
   vertical-align: middle !important;
 }
