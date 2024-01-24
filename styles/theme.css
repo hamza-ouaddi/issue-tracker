@@ -36,7 +36,7 @@
   }
 
   .h2-bold {
-    @apply text-[32px] !font-bold leading-4;
+    @apply text-[32px] !font-bold;
   }
 
   .h2-semibold {
