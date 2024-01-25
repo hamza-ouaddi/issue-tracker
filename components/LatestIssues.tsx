@@ -19,7 +19,7 @@ const LatestIssues = async () => {
   };
 
   return (
-    <div className="card-wrapper background-light900_dark200 max-w-[490px]">
+    <div className="card-wrapper background-light900_dark200 lg:max-w-[50%] w-full">
       <Flex justify="between" align="center">
         <h3 className="base-semibold text-primary900_light900">
           Latest Issues
@@ -46,14 +46,18 @@ const LatestIssues = async () => {
               <Avatar src={issue.author?.image!} fallback="U" />
               <Flex justify="between" align="center" width="100%">
                 <div className="w-full">
-                  <p className="base-semibold text-primary900_light900">
+                  <p className="base-semibold max-2xl:hidden text-primary900_light900">
+                    {truncateTitle(issue.title, 50)}
+                  </p>
+
+                  <p className="base-semibold 2xl:hidden block text-primary900_light900">
                     {truncateTitle(issue.title, 20)}
                   </p>
                   <span className="body-normal text-grey-secondary">
                     By {issue.author?.name}
                   </span>
                 </div>
-                <div className="text-end">
+                <div className="text-end max-xl:hidden max-lg:block max-sm:hidden">
                   <span className="body-normal text-grey-secondary">
                     {issue.createdAt.toDateString()}
                   </span>
