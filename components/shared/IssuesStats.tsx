@@ -32,7 +32,11 @@ const IssuesStats = ({ open, inProgress, closed }: Props) => {
     },
   ];
   return (
-    <Flex justify="between" wrap="wrap" gap="5">
+    <Flex
+      justify="between"
+      direction={{ initial: "column", sm: "row" }}
+      gap="5"
+    >
       {issuesStatus.map((status) => (
         <Flex
           key={status.label}

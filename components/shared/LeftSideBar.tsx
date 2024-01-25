@@ -17,7 +17,7 @@ const LeftSideBar = () => {
       : "/assets/images/light-logo.svg";
 
   return (
-    <section className="background-light900_dark200 p-8 flex flex-col gap-8 sm:min-w-[300px]">
+    <section className="background-light900_dark200 p-8 flex flex-col gap-8 lg:min-w-[300px] max-lg:px-4">
       <Box className="mx-auto">
         <Link href="/">
           <Image
@@ -25,7 +25,7 @@ const LeftSideBar = () => {
             alt="Logo"
             width={200}
             height={40}
-            className="max-sm:hidden"
+            className="max-lg:hidden"
           />
 
           <Image
@@ -33,7 +33,7 @@ const LeftSideBar = () => {
             alt="Logo"
             width={40}
             height={40}
-            className="sm:hidden"
+            className="lg:hidden"
           />
         </Link>
       </Box>
@@ -55,10 +55,10 @@ const LeftSideBar = () => {
                 isActive
                   ? "primary-gradient text-light-900 rounded-lg"
                   : "text-grey-secondary"
-              } flex items-center justify-start p-4 gap-3 max-sm:w-fit`}
+              } flex items-center justify-start p-4 gap-3 max-md:w-fit`}
             >
               {link.icon}
-              <p className="base-semibold max-sm:hidden">{link.label}</p>
+              <p className="base-semibold max-lg:hidden">{link.label}</p>
             </Link>
           );
         })}
