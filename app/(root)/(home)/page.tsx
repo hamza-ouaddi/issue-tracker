@@ -1,4 +1,5 @@
 import LatestIssues from "@/components/LatestIssues";
+import SummaryChart from "@/components/charts/SummaryChart";
 import IssuesStats from "@/components/shared/IssuesStats";
 import prisma from "@/prisma/client";
 import React from "react";
@@ -23,6 +24,13 @@ export default async function Home() {
           inProgress={inProgressIssues}
           closed={closedIssues}
         />
+        <div className="mt-8">
+          <SummaryChart
+            open={openIssues}
+            inProgress={inProgressIssues}
+            closed={closedIssues}
+          />
+        </div>
         <div className="mt-8">
           <LatestIssues />
         </div>
