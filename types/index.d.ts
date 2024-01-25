@@ -20,8 +20,15 @@ export interface Author {
   image: string | null;
 }
 
-export interface IssuesStatus {
+export interface IssuesStats {
   label: string;
   value: number;
   status: Status;
+  icon: ReactElement;
+}
+
+export interface IssuesStatusCount {
+  open: number;
+  inProgress: number;
+  closed: number;
 }

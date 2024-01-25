@@ -1,16 +1,10 @@
-import { IssuesStats } from "@/types";
+import { IssuesStats, IssuesStatusCount } from "@/types";
 import { Status } from "@prisma/client";
 import { Flex } from "@radix-ui/themes";
 import { CheckSquare, MessageSquareWarning, ScanLine } from "lucide-react";
-import React from "react";
+import React, { ReactElement } from "react";
 
-interface Props {
-  open: number;
-  inProgress: number;
-  closed: number;
-}
-
-const IssuesStats = ({ open, inProgress, closed }: Props) => {
+const IssuesStats = ({ open, inProgress, closed }: IssuesStatusCount) => {
   const issuesStatus: IssuesStats[] = [
     {
       label: "Open Issues",
