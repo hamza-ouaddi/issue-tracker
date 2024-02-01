@@ -1,14 +1,6 @@
 "use client";
 import React from "react";
-import {
-  AreaChart,
-  BarChart,
-  Card,
-  Flex,
-  Subtitle,
-  Switch,
-  Title,
-} from "@tremor/react";
+import { BarChart, Title } from "@tremor/react";
 import { IssuesStatusCount } from "@/types";
 
 const SummaryChart = ({ open, inProgress, closed }: IssuesStatusCount) => {
