@@ -24,7 +24,7 @@ export interface IssuesStats {
   label: string;
   value: number;
   status: Status;
-  icon: ReactElement;
+  icon?: ReactElement;
 }
 
 export interface IssuesStatusCount {

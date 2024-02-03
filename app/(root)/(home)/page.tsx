@@ -1,12 +1,36 @@
+import authOptions from "@/app/auth/authOptions";
 import LatestIssues from "@/components/LatestIssues";
+import ProfileCard from "@/components/ProfileCard";
 import ReportChart from "@/components/charts/ReportChart";
 import SummaryChart from "@/components/charts/SummaryChart";
 import IssuesStats from "@/components/shared/IssuesStats";
 import { groupByMonthAndYear } from "@/lib/utils";
 import prisma from "@/prisma/client";
-import React from "react";
+import { User } from "@prisma/client";
+import { getServerSession } from "next-auth";
 
 export default async function Home() {
+  const session = await getServerSession(authOptions);
+  const user: User = session?.user as User;
+  const userId = user?.id;
+
+  //To count User's issues
+  let userOpenIssues = 0;
+  let userInProgressIssues = 0;
+  let userClosedIssues = 0;
+
+  if (session) {
+    userOpenIssues = await prisma.issue.count({
+      where: { authorId: userId, status: "OPEN" },
+    });
+    userInProgressIssues = await prisma.issue.count({
+      where: { authorId: userId, status: "IN_PROGRESS" },
+    });
+    userClosedIssues = await prisma.issue.count({
+      where: { authorId: userId, status: "CLOSED" },
+    });
+  }
+
   //To count total issues status
   const openIssues = await prisma.issue.count({
     where: { status: "OPEN" },
@@ -38,7 +62,7 @@ export default async function Home() {
           inProgress={inProgressIssues}
           closed={closedIssues}
         />
-        <div className="mt-8 flex gap-8">
+        <div className="mt-8 flex flex-col md:flex-row gap-8">
           <SummaryChart
             open={openIssues}
             inProgress={inProgressIssues}
@@ -46,7 +70,12 @@ export default async function Home() {
           />
           <ReportChart issuesData={issuesDataPerMonth} />
         </div>
-        <div className="mt-8">
+        <div className="mt-8 flex flex-col md:flex-row gap-8">
+          <ProfileCard
+            userOpenIssues={userOpenIssues}
+            userInProgressIssues={userInProgressIssues}
+            userClosedIssues={userClosedIssues}
+          />
           <LatestIssues />
         </div>
       </div>
