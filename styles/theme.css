@@ -40,7 +40,7 @@
   }
 
   .h2-semibold {
-    @apply text-[32px] !font-semibold leading-4;
+    @apply text-[32px] !font-semibold;
   }
 
   .h3-semibold {
