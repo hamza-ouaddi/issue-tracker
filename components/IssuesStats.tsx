@@ -1,8 +1,7 @@
 import { IssuesStats, IssuesStatusCount } from "@/types";
-import { Status } from "@prisma/client";
 import { Flex } from "@radix-ui/themes";
 import { CheckSquare, MessageSquareWarning, ScanLine } from "lucide-react";
-import React, { ReactElement } from "react";
+import React from "react";
 
 const IssuesStats = ({ open, inProgress, closed }: IssuesStatusCount) => {
   const issuesStatus: IssuesStats[] = [

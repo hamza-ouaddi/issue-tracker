@@ -1,13 +1,47 @@
 import authOptions from "@/app/auth/authOptions";
-import LatestIssues from "@/components/LatestIssues";
-import ProfileCard from "@/components/ProfileCard";
-import ReportChart from "@/components/charts/ReportChart";
-import SummaryChart from "@/components/charts/SummaryChart";
-import IssuesStats from "@/components/shared/IssuesStats";
+import Skeleton from "@/components/ui/Skeleton";
 import { groupByMonthAndYear } from "@/lib/utils";
 import prisma from "@/prisma/client";
 import { User } from "@prisma/client";
+import { Flex } from "@radix-ui/themes";
 import { getServerSession } from "next-auth";
+import dynamic from "next/dynamic";
+
+//Lazy loading for client components
+const IssuesStats = dynamic(() => import("@/components/IssuesStats"), {
+  ssr: false,
+  loading: () => (
+    <Flex
+      justify="between"
+      direction={{ initial: "column", sm: "row" }}
+      gap="5"
+    >
+      {[...Array(3)].map((_, index) => (
+        <Skeleton key={index} size="h-[120px] w-[410px]" radius="rounded-2xl" />
+      ))}
+    </Flex>
+  ),
+});
+
+const SummaryChart = dynamic(() => import("@/components/charts/SummaryChart"), {
+  ssr: false,
+  loading: () => <Skeleton size="h-[420px] w-[625px]" radius="rounded-2xl" />,
+});
+
+const ReportChart = dynamic(() => import("@/components/charts/ReportChart"), {
+  ssr: false,
+  loading: () => <Skeleton size="h-[420px] w-[625px]" radius="rounded-2xl" />,
+});
+
+const ProfileCard = dynamic(() => import("@/components/ProfileCard"), {
+  ssr: false,
+  loading: () => <Skeleton size="h-[282px] w-[625px]" radius="rounded-2xl" />,
+});
+
+const LatestIssues = dynamic(() => import("@/components/LatestIssues"), {
+  ssr: false,
+  loading: () => <Skeleton size="h-[532px] w-[625px]" radius="rounded-2xl" />,
+});
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
