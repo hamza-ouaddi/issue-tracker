@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Flex } from "@radix-ui/themes";
 import AuthStatus from "./AuthStatus";
 import ThemeSwitch from "./ThemeSwitch";
+import MobileSideBar from "../shared/MobileSideBar";
 
 const Navbar = () => {
   return (
@@ -10,7 +11,10 @@ const Navbar = () => {
         <Box mx="2">
           <ThemeSwitch />
         </Box>
-        <Box className="min-w-[120px]">
+        <Box mx="2" className="md:hidden">
+          <MobileSideBar />
+        </Box>
+        <Box className="min-w-[120px] max-md:hidden">
           <AuthStatus />
         </Box>
       </Flex>

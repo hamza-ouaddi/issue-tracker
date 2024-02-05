@@ -1,3 +1,102 @@
 .radix-themes {
   --default-font-family: var(--font-plusJakartaSans) !important;
 }
+
+.DialogOverlay {
+  background-color: var(--black-a9);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 300ms ease-in-out;
+}
+
+.DialogContent {
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  width: 300vw;
+  max-width: 300px;
+  min-height: 100vh;
+  animation: contentShow 300ms ease-in-out;
+}
+
+.DialogContent[data-state="closed"] {
+  animation: contentHide 300ms ease-in;
+}
+
+.DialogOverlay[data-state="closed"] {
+  animation: overlayHide 300ms ease-in;
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayHide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    transform: translate(-100%, -50%) scale(1);
+  }
+  to {
+    transform: translate(0%, -50%) scale(1);
+  }
+}
+
+@keyframes contentHide {
+  from {
+    transform: translate(0%, -50%);
+  }
+  to {
+    transform: translate(-100%, -50%);
+  }
+}
+
+.DialogContent:focus {
+  outline: none;
+}
+
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+}
+.Button.violet {
+  color: #a3aed0;
+}
+
+.IconButton {
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #a3aed0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.IconButton:hover {
+  background-color: var(--violet-4);
+}

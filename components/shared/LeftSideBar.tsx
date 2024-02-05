@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import AuthStatus from "../navbar/AuthStatus";
 
 const LeftSideBar = () => {
   const pathname = usePathname();
@@ -17,7 +18,7 @@ const LeftSideBar = () => {
       : "/assets/images/light-logo.svg";
 
   return (
-    <section className="background-light900_dark200 p-8 flex flex-col gap-8 lg:min-w-[300px] max-lg:px-4">
+    <section className="background-light900_dark200 p-8 flex flex-col gap-8 lg:min-w-[300px] max-md:hidden max-lg:px-4">
       <Box className="mx-auto">
         <Link href="/">
           <Image
