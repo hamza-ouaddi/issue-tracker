@@ -22,7 +22,11 @@ const loading = () => {
         </Flex>
         <div className="mt-8 flex flex-col md:flex-row gap-8">
           {[...Array(2)].map((_, index) => (
-            <Skeleton size="h-[420px] w-[625px]" radius="rounded-2xl" />
+            <Skeleton
+              key={index}
+              size="h-[420px] w-[625px]"
+              radius="rounded-2xl"
+            />
           ))}
         </div>
         <div className="mt-8 flex flex-col md:flex-row gap-8">
