@@ -21,6 +21,7 @@ const LeftSideBar = () => {
       <Box className="mx-auto">
         <Link href="/">
           <Image
+            priority={true}
             src={logoSrc}
             alt="Logo"
             width={200}

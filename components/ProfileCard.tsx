@@ -54,6 +54,7 @@ const ProfileCard = ({
           >
             <div className="sm:max-lg:mx-auto">
               <Image
+                priority={true}
                 src={session.user!.image!}
                 height={200}
                 width={200}
@@ -67,8 +68,8 @@ const ProfileCard = ({
                 {session.user?.name}
               </h2>
 
-              {userIssues.map((issue) => (
-                <div className="space-y-1">
+              {userIssues.map((issue, index) => (
+                <div key={index} className="space-y-1">
                   <p className="body-semibold text-grey-secondary ">
                     {issue.label}
                   </p>
