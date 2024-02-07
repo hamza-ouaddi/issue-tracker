@@ -9,6 +9,7 @@ import DeleteIssueModal from "@/components/modals/DeleteIssueModal";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
 import DepartmentSelect from "@/components/ui/DepartmentSelect";
+import StatusSelect from "@/components/ui/StatusSelect";
 
 const page = async ({ params }: any) => {
   const session = await getServerSession(authOptions);
@@ -29,7 +30,10 @@ const page = async ({ params }: any) => {
               <Heading className="h3-semibold text-primary900_light900">
                 {result.issue.title}
               </Heading>
-              <StatusBadge status={result.issue.status} />
+              <StatusSelect
+                defaultStatus={result.issue.status}
+                issueId={params.id}
+              />
             </Flex>
             <Separator size="4" className="background-light800_dark100" />
             <CustomMarkdown content={result.issue.description} />

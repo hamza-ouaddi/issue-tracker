@@ -14,4 +14,5 @@ export const UpdateIssueSchema = z.object({
     .optional(),
 
   departmentId: z.string().min(1).max(255).optional().nullable(),
+  status: z.enum(["OPEN", "IN_PROGRESS", "CLOSED"]).optional(),
 });

@@ -3,9 +3,16 @@ import { Status } from "@prisma/client";
 import { Badge } from "@radix-ui/themes";
 import React from "react";
 
-const StatusBadge = ({ status }: { status: Status }) => {
+interface Props {
+  status: Status;
+  additionalStyle?: string;
+}
+const StatusBadge = ({ status, additionalStyle }: Props) => {
   return (
-    <Badge className="h-fit" color={issueStatus[status].color}>
+    <Badge
+      className={`h-fit ${additionalStyle}`}
+      color={issueStatus[status].color}
+    >
       {issueStatus[status].label}
     </Badge>
   );
