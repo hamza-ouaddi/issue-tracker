@@ -18,7 +18,7 @@ const IssuesStats = ({ open, inProgress, closed }: IssuesStatusCount) => {
       icon: <ScanLine size={48} strokeWidth={1.4} />,
     },
     {
-      label: "Open Issues",
+      label: "Closed Issues",
       value: closed,
       status: "CLOSED",
       icon: <CheckSquare size={48} strokeWidth={1.4} />,

@@ -14,6 +14,7 @@ import { IssueSchema } from "@/lib/validations";
 import { z } from "zod";
 import { InputErrorMessage } from "@/components/ui/InputErrorMessage";
 import { Issue } from "@prisma/client";
+import toast from "react-hot-toast";
 
 type IssueFormData = z.infer<typeof IssueSchema>;
 
@@ -37,9 +38,11 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
       if (issue) {
         //If there is data, update issue
         await axios.patch("/api/issues/" + issue.id, data);
+        toast.success("Issue updated successfully!");
       } else {
         //If there is no data, create new issue
         await axios.post("/api/issues", data);
+        toast.success("New issue successfully created!");
       }
 
       router.push("/issues");
@@ -47,6 +50,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
     } catch (error) {
       setIsSubmitting(false);
       setError("An unexpected error occured.");
+      toast.error("Oops! Something went wrong. Please try again later.");
     }
   });
 

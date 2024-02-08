@@ -7,6 +7,7 @@ import AuthProvider from "./auth/AuthProvider";
 import { Providers } from "./providers";
 import { Theme } from "@radix-ui/themes";
 import ReactQueryClientProvider from "./ReactQueryClientProvider";
+import { Toaster } from "react-hot-toast";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -35,7 +36,10 @@ export default function RootLayout({
         <ReactQueryClientProvider>
           <AuthProvider>
             <Providers>
-              <Theme>{children}</Theme>
+              <Theme>
+                <Toaster position="top-center" />
+                {children}
+              </Theme>
             </Providers>
           </AuthProvider>
         </ReactQueryClientProvider>
