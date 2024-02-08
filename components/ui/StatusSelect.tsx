@@ -12,6 +12,8 @@ interface Props {
 
 const StatusSelect = ({ issueId, defaultStatus }: Props) => {
   const [status, setStatus] = useState(defaultStatus);
+  const statusValues: Status[] = ["OPEN", "IN_PROGRESS", "CLOSED"];
+
   const handleStatusChange = (newValue: Status) => {
     try {
       axios.patch(`/api/issues/` + issueId, {
@@ -32,27 +34,15 @@ const StatusSelect = ({ issueId, defaultStatus }: Props) => {
       />
       <Select.Content position="popper">
         <Select.Group>
-          <Select.Item
-            className="hover:backgorund-light800_dark300 !cursor-pointer"
-            value="OPEN"
-          >
-            <StatusBadge status="OPEN" additionalStyle="!cursor-pointer" />
-          </Select.Item>
-          <Select.Item
-            className="hover:backgorund-light800_dark300 !cursor-pointer focus-within:backgorund-light800_dark300"
-            value="IN_PROGRESS"
-          >
-            <StatusBadge
-              status="IN_PROGRESS"
-              additionalStyle="!cursor-pointer"
-            />
-          </Select.Item>
-          <Select.Item
-            className="hover:backgorund-light800_dark300 !cursor-pointer"
-            value="CLOSED"
-          >
-            <StatusBadge status="CLOSED" additionalStyle="!cursor-pointer" />
-          </Select.Item>
+          {statusValues.map((status, index) => (
+            <Select.Item
+              key={index}
+              className="hover:backgorund-light800_dark300 !cursor-pointer focus-within:backgorund-light800_dark300"
+              value={status}
+            >
+              <StatusBadge status={status} additionalStyle="!cursor-pointer" />
+            </Select.Item>
+          ))}
         </Select.Group>
       </Select.Content>
     </Select.Root>
