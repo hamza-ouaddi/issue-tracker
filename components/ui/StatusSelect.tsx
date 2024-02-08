@@ -4,6 +4,7 @@ import StatusBadge from "./StatusBadge";
 import { Select } from "@radix-ui/themes";
 import { Status } from "@prisma/client";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 interface Props {
   issueId: string;
@@ -20,8 +21,10 @@ const StatusSelect = ({ issueId, defaultStatus }: Props) => {
         status: newValue as Status,
       });
       setStatus(newValue);
+      toast.success("Issue status updated successfully!");
     } catch (error) {
       console.log(error);
+      toast.error("Oops! Something went wrong. Please try again later.");
     }
   };
   return (

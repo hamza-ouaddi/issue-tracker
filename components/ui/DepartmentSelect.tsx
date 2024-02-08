@@ -5,6 +5,7 @@ import { Select } from "@radix-ui/themes";
 import axios from "axios";
 import { useQuery } from "react-query";
 import Skeleton from "./Skeleton";
+import toast from "react-hot-toast";
 
 const DepartmentSelect = ({ issue }: { issue: Issue }) => {
   const {
@@ -24,9 +25,15 @@ const DepartmentSelect = ({ issue }: { issue: Issue }) => {
 
   //To update the selected department in issue table
   const assignDepartment = (departmentId: string) => {
-    axios.patch("/api/issues/" + issue.id, {
-      departmentId: departmentId === "unassigned" ? null : departmentId,
-    });
+    try {
+      axios.patch("/api/issues/" + issue.id, {
+        departmentId: departmentId === "unassigned" ? null : departmentId,
+      });
+      toast.success("Department updated successfully!");
+    } catch (error) {
+      console.log(error);
+      toast.error("Oops! Something went wrong. Please try again later.");
+    }
   };
 
   return (

@@ -4,6 +4,7 @@ import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { deleteIssue } from "@/lib/actions/issue.action";
 import { useRouter } from "next/navigation";
 import Spinner from "../ui/Spinner";
+import toast from "react-hot-toast";
 
 const DeleteIssueModal = ({ issueId }: { issueId: number }) => {
   const router = useRouter();
@@ -15,12 +16,13 @@ const DeleteIssueModal = ({ issueId }: { issueId: number }) => {
       setIsDeleting(true);
 
       await deleteIssue({ issueId });
-
+      toast.success("Issue deleted successfully!");
       router.push("/issues");
       router.refresh();
     } catch (error) {
       setIsDeleting(false);
       setIsError(true);
+      toast.error("Oops! Something went wrong. Please try again later.");
     }
   };
   return (
