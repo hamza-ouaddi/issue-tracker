@@ -39,9 +39,9 @@ const IssueStatusFilter = () => {
         className="!flex !gap-4 !px-4 !py-3 text-primary600_light900 backgorund-light800_dark300 !cursor-pointer"
       />
       <Select.Content color="indigo">
-        {statusFilter.map((status) => (
+        {statusFilter.map((status, index) => (
           <Select.Item
-            key={status.value}
+            key={index}
             value={status.value || "ALL"}
             className="!cursor-pointer"
           >
