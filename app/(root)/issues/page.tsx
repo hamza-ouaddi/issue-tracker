@@ -10,10 +10,17 @@ import IssueStatusFilter from "@/components/IssueStatusFilter";
 import { Issue, Status } from "@prisma/client";
 import Pagination from "@/components/shared/Pagination";
 import IssueTable, { IssueQuery } from "@/components/IssueTable";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: IssueQuery;
 }
+
+export const metadata: Metadata = {
+  title: "Issue Tracker | Issues",
+  description:
+    "Explore and manage all issues in one place. Stay organized with a comprehensive list of all issues, and easily track their statuses, descriptions, and more.",
+};
 
 const page = async ({ searchParams }: Props) => {
   //To check if the selected status filter is available

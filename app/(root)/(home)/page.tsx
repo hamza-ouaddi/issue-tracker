@@ -4,6 +4,7 @@ import { groupByMonthAndYear } from "@/lib/utils";
 import prisma from "@/prisma/client";
 import { User } from "@prisma/client";
 import { Flex } from "@radix-ui/themes";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import dynamic from "next/dynamic";
 
@@ -42,6 +43,12 @@ const LatestIssues = dynamic(() => import("@/components/LatestIssues"), {
   ssr: false,
   loading: () => <Skeleton size="h-[532px] w-[625px]" radius="rounded-2xl" />,
 });
+
+export const metadata: Metadata = {
+  title: "Issue Tracker | Dashboard",
+  description:
+    "Track and manage all your issues efficiently with our intuitive dashboard. Get insights through stats, charts, and monthly reports. Stay updated with your profile and the latest issues at a glance.",
+};
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
