@@ -5,7 +5,7 @@ import React from "react";
 const loading = () => {
   return (
     <div>
-      <h1 className="h1-bold text-primary900_light900">22</h1>
+      <h1 className="h1-bold text-primary900_light900">Dashboard</h1>
       <div className="mt-16">
         <Flex
           justify="between"
@@ -15,7 +15,7 @@ const loading = () => {
           {[...Array(3)].map((_, index) => (
             <Skeleton
               key={index}
-              size="h-[120px] w-[410px]"
+              size="h-[120px] max-w-[410px]"
               radius="rounded-2xl"
             />
           ))}
