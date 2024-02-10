@@ -52,7 +52,7 @@ const ProfileCard = ({
             mt="4"
             gap="5"
           >
-            <div className="sm:max-lg:mx-auto">
+            <div className="max-lg:mx-auto">
               <Image
                 priority={true}
                 src={session.user!.image!}

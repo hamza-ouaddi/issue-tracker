@@ -1,26 +1,11 @@
 import Navbar from "@/components/navbar/Navbar";
-import Skeleton from "@/components/ui/Skeleton";
-import { Flex } from "@radix-ui/themes";
+import LeftSideBarSkeleton from "@/components/ui/LeftSideBarSkeleton";
 import dynamic from "next/dynamic";
 import React from "react";
 
 const LeftSideBar = dynamic(() => import("@/components/shared/LeftSideBar"), {
   ssr: false,
-  loading: () => (
-    <Flex
-      direction="column"
-      p="6"
-      gap="8"
-      className="background-light900_dark200"
-    >
-      <Skeleton size="h-14 w-60" radius="rounded-lg" />
-
-      <Flex direction="column" gap="4">
-        <Skeleton size="h-14 w-60" radius="rounded-lg" />
-        <Skeleton size="h-14 w-60" radius="rounded-lg" />
-      </Flex>
-    </Flex>
-  ),
+  loading: () => <LeftSideBarSkeleton />,
 });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

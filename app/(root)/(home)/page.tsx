@@ -18,7 +18,11 @@ const IssuesStats = dynamic(() => import("@/components/IssuesStats"), {
       gap="5"
     >
       {[...Array(3)].map((_, index) => (
-        <Skeleton key={index} size="h-[120px] w-[410px]" radius="rounded-2xl" />
+        <Skeleton
+          key={index}
+          size="h-[120px] w-[410px] max-md:w-full"
+          radius="rounded-2xl"
+        />
       ))}
     </Flex>
   ),
@@ -26,22 +30,30 @@ const IssuesStats = dynamic(() => import("@/components/IssuesStats"), {
 
 const SummaryChart = dynamic(() => import("@/components/charts/SummaryChart"), {
   ssr: false,
-  loading: () => <Skeleton size="h-[420px] w-[625px]" radius="rounded-2xl" />,
+  loading: () => (
+    <Skeleton size="h-[420px] w-[625px] max-md:w-full" radius="rounded-2xl" />
+  ),
 });
 
 const ReportChart = dynamic(() => import("@/components/charts/ReportChart"), {
   ssr: false,
-  loading: () => <Skeleton size="h-[420px] w-[625px]" radius="rounded-2xl" />,
+  loading: () => (
+    <Skeleton size="h-[420px] w-[625px] max-md:w-full" radius="rounded-2xl" />
+  ),
 });
 
 const ProfileCard = dynamic(() => import("@/components/ProfileCard"), {
   ssr: false,
-  loading: () => <Skeleton size="h-[282px] w-[625px]" radius="rounded-2xl" />,
+  loading: () => (
+    <Skeleton size="h-[282px] w-[625px] max-md:w-full" radius="rounded-2xl" />
+  ),
 });
 
 const LatestIssues = dynamic(() => import("@/components/LatestIssues"), {
   ssr: false,
-  loading: () => <Skeleton size="h-[532px] w-[625px]" radius="rounded-2xl" />,
+  loading: () => (
+    <Skeleton size="h-[532px] w-[625px] max-md:w-full" radius="rounded-2xl" />
+  ),
 });
 
 export const metadata: Metadata = {

@@ -55,7 +55,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
   });
 
   return (
-    <div className="card-wrapper max-w-fit background-light900_dark200 flex flex-col gap-6 mt-16">
+    <div className="card-wrapper max-w-[480px] background-light900_dark200 flex flex-col gap-6 mt-16">
       {error && (
         <Callout.Root color="red">
           <Callout.Icon>
