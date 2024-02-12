@@ -11,7 +11,12 @@ const Loading = () => {
       <h1 className="h1-bold text-primary900_light900">Issues</h1>
       <div className="card-wrapper w-full background-light900_dark200 flex flex-col gap-5 mt-16">
         <div className="flex justify-end">
-          <Button href="/create" title="Add Issue" icon={<Plus scale={30} />} />
+          <Button
+            theme="primary"
+            href="/create"
+            title="Add Issue"
+            icon={<Plus scale={30} />}
+          />
         </div>
         <Table.Root>
           <Table.Header>
