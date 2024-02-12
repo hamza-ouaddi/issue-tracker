@@ -33,9 +33,8 @@ const LatestIssues = async () => {
       </Flex>
       <div className="space-y-2 mt-4">
         {issues.map((issue, index) => (
-          <Link href={`/issues/${issue.id}`}>
+          <Link key={issue.id} href={`/issues/${issue.id}`}>
             <Flex
-              key={issue.id}
               align="center"
               gap="6"
               className={`p-4 !w-full hover:bg-light-800 dark:hover:bg-dark-100 rounded-2xl ${
