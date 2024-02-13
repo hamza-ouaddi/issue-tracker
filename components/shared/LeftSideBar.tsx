@@ -13,9 +13,9 @@ const LeftSideBar = () => {
   const { theme } = useTheme();
 
   const logoSrc =
-    theme === "light"
-      ? "/assets/images/dark-logo.svg"
-      : "/assets/images/light-logo.svg";
+    theme === "dark"
+      ? "/assets/images/light-logo.svg"
+      : "/assets/images/dark-logo.svg";
 
   return (
     <section className="background-light900_dark200 p-8 flex flex-col gap-8 lg:min-w-[300px] max-md:hidden max-lg:px-4">
