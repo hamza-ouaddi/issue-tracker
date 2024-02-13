@@ -15,31 +15,35 @@ const ThemeSwitch = () => {
     return <Skeleton radius="rounded-full" size="h-4 w-4" />;
   }
 
-  if (theme === "dark") {
-    return (
-      <Image
-        src="/assets/images/Sun.svg"
-        width={18}
-        height={18}
-        alt="Sun Icon"
-        onClick={() => setTheme("light")}
-        className="cursor-pointer"
-      />
-    );
+  if (typeof window !== "undefined") {
+    if (theme === "dark") {
+      return (
+        <Image
+          src="/assets/images/Sun.svg"
+          width={18}
+          height={18}
+          alt="Sun Icon"
+          onClick={() => setTheme("light")}
+          className="cursor-pointer"
+        />
+      );
+    }
+
+    if (theme === "light") {
+      return (
+        <Image
+          src="/assets/images/Moon.svg"
+          width={18}
+          height={18}
+          alt="Moon Icon"
+          onClick={() => setTheme("dark")}
+          className="cursor-pointer"
+        />
+      );
+    }
   }
 
-  if (theme === "light") {
-    return (
-      <Image
-        src="/assets/images/Moon.svg"
-        width={18}
-        height={18}
-        alt="Moon Icon"
-        onClick={() => setTheme("dark")}
-        className="cursor-pointer"
-      />
-    );
-  }
+  return null;
 };
 
 export default ThemeSwitch;
