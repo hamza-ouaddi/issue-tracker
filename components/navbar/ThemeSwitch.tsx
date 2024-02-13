@@ -41,6 +41,8 @@ const ThemeSwitch = () => {
         />
       );
     }
+
+    return <h1>Theme Switch</h1>;
   }
 };
 
