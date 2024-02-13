@@ -42,8 +42,6 @@ const ThemeSwitch = () => {
       );
     }
   }
-
-  return null;
 };
 
 export default ThemeSwitch;
