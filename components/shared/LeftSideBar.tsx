@@ -12,6 +12,8 @@ const LeftSideBar = () => {
   const pathname = usePathname();
   const { theme } = useTheme();
 
+  console.log("Theme: ", theme)
+
   const logoSrc =
     theme === "dark"
       ? "/assets/images/light-logo.svg"
