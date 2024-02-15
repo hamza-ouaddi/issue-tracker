@@ -12,12 +12,26 @@ const LeftSideBar = () => {
   const pathname = usePathname();
   const { theme } = useTheme();
 
-  console.log("Theme: ", theme)
+  console.log("Theme: ", theme);
 
-  const logoSrc =
-    theme === "dark"
-      ? "/assets/images/light-logo.svg"
-      : "/assets/images/dark-logo.svg";
+  let logoSrc;
+
+  switch (theme) {
+    case "light":
+      logoSrc = "/assets/images/dark-logo.svg";
+      break;
+    case "dark":
+      logoSrc = "/assets/images/light-logo.svg";
+      break;
+    default:
+      logoSrc =
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+      break;
+  }
+  // const logoSrc =
+  //   theme === "dark"
+  //     ? "/assets/images/light-logo.svg"
+  //     : "/assets/images/dark-logo.svg";
 
   return (
     <section className="background-light900_dark200 p-8 flex flex-col gap-8 lg:min-w-[300px] max-md:hidden max-lg:px-4">
