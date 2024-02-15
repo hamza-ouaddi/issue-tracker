@@ -7,9 +7,10 @@ import Skeleton from "../ui/Skeleton";
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, theme, setTheme } = useTheme();
 
-  console.log("Theme: ", theme)
+  console.log("Theme in themeswitch: ", theme);
+  console.log("ResolvedTheme in themeswitch: ", resolvedTheme);
 
   useEffect(() => setMounted(true), []);
 
@@ -18,7 +19,7 @@ const ThemeSwitch = () => {
   }
 
   if (typeof window !== "undefined") {
-    if (theme === "dark") {
+    if (resolvedTheme === "dark") {
       return (
         <Image
           src="/assets/images/Sun.svg"
@@ -31,7 +32,7 @@ const ThemeSwitch = () => {
       );
     }
 
-    if (theme === "light") {
+    if (resolvedTheme === "light") {
       return (
         <Image
           src="/assets/images/Moon.svg"
