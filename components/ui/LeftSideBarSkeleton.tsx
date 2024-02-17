@@ -8,7 +8,7 @@ const LeftSideBarSkeleton = () => {
       <Flex
         direction="column"
         gap="8"
-        className="background-light900_dark200 p-8 max-lg:p-4"
+        className="background-light900_dark200 h-full p-8 max-lg:p-4"
       >
         <Skeleton
           size="h-14 w-60 max-lg:w-14 max-md:hidden"
