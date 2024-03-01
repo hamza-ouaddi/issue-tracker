@@ -1,3 +1,24 @@
+# Issue Tracker
+
+## Key Features:
+
+<ol>
+  <li><strong>Issue Tracking:</strong> eamlessly manage various types of issues, including bug reports, problem reports, feature requests, and tasks.</li>
+  <li><strong>Comprehensive Dashboard:</strong> Access insightful statistics and summaries, including total issues, open issues, issues in progress, closed issues, issues per month, and personal issue counts.</li>
+  <li><strong>Real-time Updates:</strong> Access all issues and their current status, along with assigned departments, for streamlined project oversight.</li>
+  <li><strong>User-friendly Interface:</strong> Enjoy a user-friendly interface designed for easy navigation and intuitive use.</li>
+</ol>
+
+
+## Tech Stack:
+
+<ul>
+  <li><strong>Frontend:</strong> Next.js, TypeScript, Radix UI, Tailwind CSS.</li>
+  <li><strong>Backend:</strong> Prisma, MySQL.</li>
+</ul>
+
+***
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
