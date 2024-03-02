@@ -1,5 +1,15 @@
 # Issue Tracker
 
+### Dashboard Page:
+![Dashboard mockup](https://github.com/hamza-ouaddi/issue-tracker/assets/80076862/04f6eeaf-865f-479b-b5fb-87950aa06b52)
+
+### Issues Page:
+![Issues mockup](https://github.com/hamza-ouaddi/issue-tracker/assets/80076862/71ba5db9-6828-4a87-8ec0-b2ea5c5bfba6)
+
+### Single Issue Page:
+![Single Issue Page mockup](https://github.com/hamza-ouaddi/issue-tracker/assets/80076862/83d5b139-d455-4bae-b179-721352505279)
+
+
 ## Key Features:
 
 <ol>
