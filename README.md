@@ -54,7 +54,7 @@ Backend: Prisma, MySQL
 
 ![](https://github.com/hamza-ouaddi/issue-tracker/assets/80076862/f139772d-3edb-43bc-bb64-374cdbc2ad3b)
 
-Link: https://www.youtube.com/watch?v=O4Ux4QgHKTE
+Link: [https://www.youtube.com/watch?v=O4Ux4QgHKTE](https://youtu.be/m5x_BsCFlTc)
 
 
 ***
