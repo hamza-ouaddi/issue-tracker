@@ -1,5 +1,30 @@
 # Issue Tracker
 
+Hello everyone, I just want to introduce Issue Tracker project, an ultimate solution for efficient issue tracking and management!
+
+
+Key Features:
+
+
+Issue Tracking: Manage various types of issues, including bug reports, problem reports, feature requests, and tasks.
+
+
+Comprehensive Dashboard: Gain insights at a glance with a user friendly dashboard displaying statistics and summaries of all issues, including open, in progress, and closed issues, issues per month, and personal issue counts.
+
+
+Real-time Updates: Stay up-to-date with updates on issue status changes and project progress.
+
+
+User-friendly Interface: Enjoy a user-friendly interface designed for easy navigation and intuitive use.
+
+
+Tech Stack:
+
+Frontend: Next.js, TypeScript, Radix UI, Tailwind CSS
+
+Backend: Prisma, MySQL
+
+
 ### Dashboard Page:
 ![Dashboard mockup](https://github.com/hamza-ouaddi/issue-tracker/assets/80076862/04f6eeaf-865f-479b-b5fb-87950aa06b52)
 
@@ -13,7 +38,7 @@
 ## Key Features:
 
 <ol>
-  <li><strong>Issue Tracking:</strong> eamlessly manage various types of issues, including bug reports, problem reports, feature requests, and tasks.</li>
+  <li><strong>Issue Tracking:</strong> Seamlessly manage various types of issues, including bug reports, problem reports, feature requests, and tasks.</li>
   <li><strong>Comprehensive Dashboard:</strong> Access insightful statistics and summaries, including total issues, open issues, issues in progress, closed issues, issues per month, and personal issue counts.</li>
   <li><strong>Real-time Updates:</strong> Access all issues and their current status, along with assigned departments, for streamlined project oversight.</li>
   <li><strong>User-friendly Interface:</strong> Enjoy a user-friendly interface designed for easy navigation and intuitive use.</li>
@@ -26,6 +51,11 @@
   <li><strong>Frontend:</strong> Next.js, TypeScript, Radix UI, Tailwind CSS.</li>
   <li><strong>Backend:</strong> Prisma, MySQL.</li>
 </ul>
+
+![](https://github.com/hamza-ouaddi/issue-tracker/assets/80076862/f139772d-3edb-43bc-bb64-374cdbc2ad3b)
+
+Link: https://www.youtube.com/watch?v=O4Ux4QgHKTE
+
 
 ***
 
